@@ -22,8 +22,8 @@
   --radius-md: 22px;
   --radius-sm: 10px;
 
-  --font-sans: "Noto Sans SC", sans-serif;
-  --font-serif: "Noto Serif SC", serif;
+  --font-sans: "Noto Sans TC", sans-serif;
+  --font-serif: "Noto Serif TC", serif;
   --font-logo: "Cormorant Garamond", serif;
 
   --animate-pop: pop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -41,13 +41,19 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-bg text-ink font-sans font-light leading-[1.7] antialiased;
+    @apply bg-bg text-ink font-sans font-normal leading-[1.7] antialiased;
   }
   h1, h2, h3 {
     @apply font-serif font-semibold tracking-[0.02em];
   }
   a {
     @apply text-inherit no-underline;
+  }
+  section {
+    @apply py-[120px] max-[720px]:py-20;
+  }
+  section[id] {
+    @apply scroll-mt-[78px];
   }
 }
 
