@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import IconSprite from "../components/IconSprite.astro";
 
 interface Props {
   title?: string;
@@ -16,11 +17,32 @@ const { title = "Hanna｜妝造設計" } = Astro.props;
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
     rel="stylesheet"
   />
 </head>
 <body>
+  <IconSprite />
   <slot />
+  <script>
+    function scrollSectionToCenter(id: string) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const elementCenter = rect.top + rect.height / 2 + window.scrollY;
+      const top = Math.max(0, elementCenter - window.innerHeight / 2);
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+
+    document.addEventListener("click", (event) => {
+      const link = (event.target as HTMLElement).closest('a[href^="#"]');
+      if (!(link instanceof HTMLAnchorElement)) return;
+      const id = link.getAttribute("href")?.slice(1);
+      if (!id || !document.getElementById(id)) return;
+      event.preventDefault();
+      scrollSectionToCenter(id);
+      history.pushState(null, "", `#${id}`);
+    });
+  </script>
 </body>
 </html>
