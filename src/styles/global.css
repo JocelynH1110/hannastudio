@@ -3,22 +3,22 @@
 @theme {
   --header-height: 78px;
 
-  --color-bg: #F7F1E5;
-  --color-bg-alt: #EFE6D6;
-  --color-ink: #3A312A;
-  --color-ink-soft: #6B5E52;  /* deepened from #7A6D61 for WCAG AA contrast on bg/bg-alt */
+  --color-bg: #f7f1e5;
+  --color-bg-alt: #efe6d6;
+  --color-ink: #3a312a;
+  --color-ink-soft: #6b5e52; /* deepened from #7A6D61 for WCAG AA contrast on bg/bg-alt */
   --color-line: rgba(58, 49, 42, 0.14);
 
-  --color-rose: #C79790;      /* 脏粉 dirty pink, deepened */
-  --color-rose-text: #9C665C; /* same rose family, deepened further for use as text (WCAG AA on bg) */
-  --color-rose-soft: #E7D3CD; /* 肉桂粉 cinnamon pink */
-  --color-coffee: #C7B39C;    /* 奶咖 milk coffee */
-  --color-camel: #A9835F;     /* 米驼 rice camel, deepened */
-  --color-cream: #F1DFB9;     /* 暖黄 warm yellow */
-  --color-wisteria: #B69EC0;  /* 玉紫藤 deepened */
-  --color-wisteria-soft: #E4D7E6;
-  --color-green: #6C8B79;     /* 复古绿 */
-  --color-stone: #D7D0C2;     /* 杏子灰 / 淡雅灰 */
+  --color-rose: #c79790; /* 脏粉 dirty pink, deepened */
+  --color-rose-text: #9c665c; /* same rose family, deepened further for use as text (WCAG AA on bg) */
+  --color-rose-soft: #e7d3cd; /* 肉桂粉 cinnamon pink */
+  --color-coffee: #c7b39c; /* 奶咖 milk coffee */
+  --color-camel: #a9835f; /* 米驼 rice camel, deepened */
+  --color-cream: #f1dfb9; /* 暖黄 warm yellow */
+  --color-wisteria: #b69ec0; /* 玉紫藤 deepened */
+  --color-wisteria-soft: #e4d7e6;
+  --color-green: #6c8b79; /* 复古绿 */
+  --color-stone: #d7d0c2; /* 杏子灰 / 淡雅灰 */
 
   --radius-lg: 40px;
   --radius-md: 22px;
@@ -45,7 +45,9 @@
   body {
     @apply bg-bg text-ink font-sans font-normal leading-[1.7] antialiased;
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply font-serif font-semibold tracking-[0.02em];
   }
   a {

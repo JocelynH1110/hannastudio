@@ -1,469 +1,900 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanna｜妝造設計</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg: #F7F1E5;
-    --bg-alt: #EFE6D6;
-    --ink: #3A312A;
-    --ink-soft: #7A6D61;
-    --line: rgba(58,49,42,0.14);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hanna｜妝造設計</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f7f1e5;
+        --bg-alt: #efe6d6;
+        --ink: #3a312a;
+        --ink-soft: #7a6d61;
+        --line: rgba(58, 49, 42, 0.14);
 
-    --rose: #C79790;      /* 脏粉 dirty pink, deepened */
-    --rose-soft: #E7D3CD; /* 肉桂粉 cinnamon pink */
-    --coffee: #C7B39C;    /* 奶咖 milk coffee */
-    --camel: #A9835F;     /* 米驼 rice camel, deepened */
-    --cream: #F1DFB9;     /* 暖黄 warm yellow */
-    --wisteria: #B69EC0;  /* 玉紫藤 deepened */
-    --wisteria-soft: #E4D7E6;
-    --green: #6C8B79;     /* 复古绿 */
-    --stone: #D7D0C2;     /* 杏子灰 / 淡雅灰 */
+        --rose: #c79790; /* 脏粉 dirty pink, deepened */
+        --rose-soft: #e7d3cd; /* 肉桂粉 cinnamon pink */
+        --coffee: #c7b39c; /* 奶咖 milk coffee */
+        --camel: #a9835f; /* 米驼 rice camel, deepened */
+        --cream: #f1dfb9; /* 暖黄 warm yellow */
+        --wisteria: #b69ec0; /* 玉紫藤 deepened */
+        --wisteria-soft: #e4d7e6;
+        --green: #6c8b79; /* 复古绿 */
+        --stone: #d7d0c2; /* 杏子灰 / 淡雅灰 */
 
-    --radius-lg: 40px;
-    --radius-md: 22px;
-    --radius-sm: 10px;
-  }
+        --radius-lg: 40px;
+        --radius-md: 22px;
+        --radius-sm: 10px;
+      }
 
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  html{ scroll-behavior:smooth; }
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:"Noto Sans SC", sans-serif;
-    font-weight:300;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3,.serif{
-    font-family:"Noto Serif SC", serif;
-    font-weight:600;
-    letter-spacing:0.02em;
-  }
-  .logotype{
-    font-family:"Cormorant Garamond", serif;
-    font-style:italic;
-    font-weight:500;
-  }
-  a{ color:inherit; text-decoration:none; }
-  img{ max-width:100%; display:block; }
-  .wrap{
-    max-width:1160px;
-    margin:0 auto;
-    padding:0 32px;
-  }
-  section{ padding:120px 0; }
-  @media (max-width:720px){
-    section{ padding:80px 0; }
-    .wrap{ padding:0 22px; }
-  }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Noto Sans SC", sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      .serif {
+        font-family: "Noto Serif SC", serif;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      .logotype {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 500;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+      section {
+        padding: 120px 0;
+      }
+      @media (max-width: 720px) {
+        section {
+          padding: 80px 0;
+        }
+        .wrap {
+          padding: 0 22px;
+        }
+      }
 
-  /* ---------- NAV ---------- */
-  header{
-    position:fixed; top:0; left:0; right:0; z-index:50;
-    background:rgba(247,241,229,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  nav.wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:78px;
-  }
-  .nav-logo{ font-size:26px; }
-  .nav-links{ display:flex; gap:36px; font-size:15px; color:var(--ink-soft); }
-  .nav-links a{ transition:color .25s ease; }
-  .nav-links a:hover{ color:var(--rose); }
-  .nav-cta{
-    font-size:14px; padding:10px 22px; border:1px solid var(--ink);
-    border-radius:999px; white-space:nowrap;
-  }
-  .nav-cta:hover{ background:var(--ink); color:var(--bg); }
-  .nav-mobile-hide{ }
-  @media (max-width:760px){
-    .nav-links{ display:none; }
-  }
+      /* ---------- NAV ---------- */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(247, 241, 229, 0.86);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      nav.wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 78px;
+      }
+      .nav-logo {
+        font-size: 26px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        font-size: 15px;
+        color: var(--ink-soft);
+      }
+      .nav-links a {
+        transition: color 0.25s ease;
+      }
+      .nav-links a:hover {
+        color: var(--rose);
+      }
+      .nav-cta {
+        font-size: 14px;
+        padding: 10px 22px;
+        border: 1px solid var(--ink);
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .nav-cta:hover {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .nav-mobile-hide {
+      }
+      @media (max-width: 760px) {
+        .nav-links {
+          display: none;
+        }
+      }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    padding-top:190px; padding-bottom:100px;
-    display:grid; grid-template-columns:1.15fr 0.85fr; gap:60px; align-items:center;
-  }
-  @media (max-width:900px){
-    .hero{ grid-template-columns:1fr; padding-top:150px; }
-  }
-  .eyebrow{
-    font-size:14px; color:var(--ink-soft); letter-spacing:0.08em; margin-bottom:22px;
-  }
-  .eyebrow::before{
-    content:""; display:inline-block; width:22px; height:1px; background:var(--camel);
-    margin-right:10px; vertical-align:middle;
-  }
-  .hero h1{
-    font-size:clamp(38px,5.6vw,64px);
-    line-height:1.28;
-    margin-bottom:26px;
-  }
-  .hero p.lead{
-    font-size:17px; color:var(--ink-soft); max-width:38ch; margin-bottom:40px;
-  }
-  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
-  .btn{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:15px 30px; border-radius:999px; font-size:15px;
-    transition:transform .25s ease, background .25s ease, color .25s ease;
-  }
-  .btn-primary{ background:var(--ink); color:var(--bg); }
-  .btn-primary:hover{ background:var(--rose); transform:translateY(-2px); }
-  .btn-ghost{ border:1px solid var(--line); color:var(--ink); }
-  .btn-ghost:hover{ border-color:var(--ink); transform:translateY(-2px); }
+      /* ---------- HERO ---------- */
+      .hero {
+        padding-top: 190px;
+        padding-bottom: 100px;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 60px;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 150px;
+        }
+      }
+      .eyebrow {
+        font-size: 14px;
+        color: var(--ink-soft);
+        letter-spacing: 0.08em;
+        margin-bottom: 22px;
+      }
+      .eyebrow::before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 1px;
+        background: var(--camel);
+        margin-right: 10px;
+        vertical-align: middle;
+      }
+      .hero h1 {
+        font-size: clamp(38px, 5.6vw, 64px);
+        line-height: 1.28;
+        margin-bottom: 26px;
+      }
+      .hero p.lead {
+        font-size: 17px;
+        color: var(--ink-soft);
+        max-width: 38ch;
+        margin-bottom: 40px;
+      }
+      .btn-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 30px;
+        border-radius: 999px;
+        font-size: 15px;
+        transition:
+          transform 0.25s ease,
+          background 0.25s ease,
+          color 0.25s ease;
+      }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--bg);
+      }
+      .btn-primary:hover {
+        background: var(--rose);
+        transform: translateY(-2px);
+      }
+      .btn-ghost {
+        border: 1px solid var(--line);
+        color: var(--ink);
+      }
+      .btn-ghost:hover {
+        border-color: var(--ink);
+        transform: translateY(-2px);
+      }
 
-  /* hero palette cluster - echoes an eyeshadow palette */
-  .palette-cluster{
-    position:relative; aspect-ratio:1/1; max-width:420px; margin:0 auto;
-  }
-  .pan{
-    position:absolute; border-radius:50%;
-    opacity:0; transform:scale(.6);
-    animation:pop .7s cubic-bezier(.2,.8,.2,1) forwards;
-    box-shadow: inset 0 0 0 1px rgba(58,49,42,0.06);
-  }
-  @keyframes pop{ to{ opacity:1; transform:scale(1); } }
-  .pan.p1{ width:46%; height:46%; top:2%;  left:8%;  background:var(--rose-soft); animation-delay:.05s; }
-  .pan.p2{ width:34%; height:34%; top:6%;  left:58%; background:var(--coffee); animation-delay:.18s; }
-  .pan.p3{ width:30%; height:30%; top:44%; left:2%;  background:var(--stone); animation-delay:.3s; }
-  .pan.p4{ width:40%; height:40%; top:38%; left:34%; background:var(--rose); animation-delay:.42s; }
-  .pan.p5{ width:26%; height:26%; top:60%; left:76%; background:var(--wisteria-soft); animation-delay:.5s;}
-  .pan.p6{ width:22%; height:22%; top:78%; left:14%; background:var(--cream); animation-delay:.6s; }
-  .pan.p7{ width:30%; height:30%; top:70%; left:42%; background:var(--green); animation-delay:.7s; }
-  .pan.p8{ width:20%; height:20%; top:14%; left:38%; background:var(--camel); animation-delay:.8s; }
+      /* hero palette cluster - echoes an eyeshadow palette */
+      .palette-cluster {
+        position: relative;
+        aspect-ratio: 1/1;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .pan {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0;
+        transform: scale(0.6);
+        animation: pop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        box-shadow: inset 0 0 0 1px rgba(58, 49, 42, 0.06);
+      }
+      @keyframes pop {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .pan.p1 {
+        width: 46%;
+        height: 46%;
+        top: 2%;
+        left: 8%;
+        background: var(--rose-soft);
+        animation-delay: 0.05s;
+      }
+      .pan.p2 {
+        width: 34%;
+        height: 34%;
+        top: 6%;
+        left: 58%;
+        background: var(--coffee);
+        animation-delay: 0.18s;
+      }
+      .pan.p3 {
+        width: 30%;
+        height: 30%;
+        top: 44%;
+        left: 2%;
+        background: var(--stone);
+        animation-delay: 0.3s;
+      }
+      .pan.p4 {
+        width: 40%;
+        height: 40%;
+        top: 38%;
+        left: 34%;
+        background: var(--rose);
+        animation-delay: 0.42s;
+      }
+      .pan.p5 {
+        width: 26%;
+        height: 26%;
+        top: 60%;
+        left: 76%;
+        background: var(--wisteria-soft);
+        animation-delay: 0.5s;
+      }
+      .pan.p6 {
+        width: 22%;
+        height: 22%;
+        top: 78%;
+        left: 14%;
+        background: var(--cream);
+        animation-delay: 0.6s;
+      }
+      .pan.p7 {
+        width: 30%;
+        height: 30%;
+        top: 70%;
+        left: 42%;
+        background: var(--green);
+        animation-delay: 0.7s;
+      }
+      .pan.p8 {
+        width: 20%;
+        height: 20%;
+        top: 14%;
+        left: 38%;
+        background: var(--camel);
+        animation-delay: 0.8s;
+      }
 
-  /* ---------- SECTION HEADS ---------- */
-  .section-head{
-    display:flex; justify-content:space-between; align-items:flex-end;
-    gap:24px; margin-bottom:56px; border-bottom:1px solid var(--line); padding-bottom:26px;
-  }
-  .section-head h2{ font-size:clamp(28px,3.4vw,40px); }
-  .section-head .num{ font-family:"Cormorant Garamond",serif; font-size:20px; color:var(--ink-soft); font-style:italic; }
-  @media (max-width:600px){ .section-head{ flex-direction:column; align-items:flex-start; gap:10px; } }
+      /* ---------- SECTION HEADS ---------- */
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        margin-bottom: 56px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 26px;
+      }
+      .section-head h2 {
+        font-size: clamp(28px, 3.4vw, 40px);
+      }
+      .section-head .num {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        color: var(--ink-soft);
+        font-style: italic;
+      }
+      @media (max-width: 600px) {
+        .section-head {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      }
 
-  /* ---------- ABOUT ---------- */
-  .about{ background:var(--bg-alt); }
-  .about-grid{
-    display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;
-  }
-  @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
-  .about-portrait{
-    aspect-ratio:4/5; border-radius:var(--radius-lg);
-    background:linear-gradient(155deg, var(--rose-soft), var(--stone) 55%, var(--coffee));
-    position:relative; overflow:hidden;
-  }
-  .about-portrait::after{
-    content:"Hanna"; position:absolute; bottom:26px; left:26px;
-    font-family:"Cormorant Garamond",serif; font-style:italic; font-size:22px; color:rgba(58,49,42,0.55);
-  }
-  .about-copy p{ margin-bottom:20px; color:var(--ink-soft); font-size:16px; max-width:52ch; }
-  .about-copy strong{ color:var(--ink); font-weight:500; }
-  .about-stats{ display:flex; gap:44px; margin-top:36px; }
-  .about-stats div span{ display:block; font-family:"Noto Serif SC",serif; font-size:30px; color:var(--rose); }
-  .about-stats div small{ color:var(--ink-soft); font-size:13px; }
+      /* ---------- ABOUT ---------- */
+      .about {
+        background: var(--bg-alt);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 70px;
+        align-items: center;
+      }
+      @media (max-width: 820px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+      }
+      .about-portrait {
+        aspect-ratio: 4/5;
+        border-radius: var(--radius-lg);
+        background: linear-gradient(155deg, var(--rose-soft), var(--stone) 55%, var(--coffee));
+        position: relative;
+        overflow: hidden;
+      }
+      .about-portrait::after {
+        content: "Hanna";
+        position: absolute;
+        bottom: 26px;
+        left: 26px;
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 22px;
+        color: rgba(58, 49, 42, 0.55);
+      }
+      .about-copy p {
+        margin-bottom: 20px;
+        color: var(--ink-soft);
+        font-size: 16px;
+        max-width: 52ch;
+      }
+      .about-copy strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+      .about-stats {
+        display: flex;
+        gap: 44px;
+        margin-top: 36px;
+      }
+      .about-stats div span {
+        display: block;
+        font-family: "Noto Serif SC", serif;
+        font-size: 30px;
+        color: var(--rose);
+      }
+      .about-stats div small {
+        color: var(--ink-soft);
+        font-size: 13px;
+      }
 
-  /* ---------- SERVICES ---------- */
-  .services-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
-  }
-  @media (max-width:900px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
-  @media (max-width:520px){ .services-grid{ grid-template-columns:1fr; } }
-  .service-card{
-    background:var(--bg); padding:38px 28px; transition:background .3s ease;
-  }
-  .service-card:hover{ background:var(--bg-alt); }
-  .service-dot{ width:14px; height:14px; border-radius:50%; margin-bottom:22px; }
-  .service-card h3{ font-size:19px; margin-bottom:12px; font-weight:600; }
-  .service-card p{ font-size:14px; color:var(--ink-soft); }
+      /* ---------- SERVICES ---------- */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      @media (max-width: 900px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 520px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .service-card {
+        background: var(--bg);
+        padding: 38px 28px;
+        transition: background 0.3s ease;
+      }
+      .service-card:hover {
+        background: var(--bg-alt);
+      }
+      .service-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        margin-bottom: 22px;
+      }
+      .service-card h3 {
+        font-size: 19px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+      .service-card p {
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
 
-  /* ---------- PORTFOLIO ---------- */
-  .portfolio-grid{
-    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:150px; gap:14px;
-  }
-  @media (max-width:900px){ .portfolio-grid{ grid-template-columns:repeat(3,1fr); grid-auto-rows:130px; } }
-  @media (max-width:560px){ .portfolio-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } }
-  .p-item{
-    position:relative; border-radius:var(--radius-sm); overflow:hidden;
-    display:flex; align-items:flex-end; padding:16px;
-  }
-  .p-item span{ position:relative; color:rgba(58,49,42,0.75); font-size:13px; }
-  .p-item.wide{ grid-column:span 2; }
-  .p-item.tall{ grid-row:span 2; }
-  .i1{ grid-column:span 2; grid-row:span 2; background:linear-gradient(160deg,var(--rose-soft),var(--rose)); }
-  .i2{ background:var(--stone); }
-  .i3{ background:var(--coffee); grid-row:span 2; }
-  .i4{ background:linear-gradient(160deg,var(--cream),var(--camel)); grid-column:span 2; }
-  .i5{ background:var(--wisteria-soft); }
-  .i6{ background:var(--green); grid-column:span 2; }
-  .i7{ background:var(--rose); grid-row:span 2; }
-  .i8{ background:var(--stone); }
-  .i9{ background:linear-gradient(160deg,var(--coffee),var(--wisteria)); grid-column:span 2; }
-  .portfolio-note{ margin-top:26px; font-size:13px; color:var(--ink-soft); }
+      /* ---------- PORTFOLIO ---------- */
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-auto-rows: 150px;
+        gap: 14px;
+      }
+      @media (max-width: 900px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-rows: 130px;
+        }
+      }
+      @media (max-width: 560px) {
+        .portfolio-grid {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 120px;
+        }
+      }
+      .p-item {
+        position: relative;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        padding: 16px;
+      }
+      .p-item span {
+        position: relative;
+        color: rgba(58, 49, 42, 0.75);
+        font-size: 13px;
+      }
+      .p-item.wide {
+        grid-column: span 2;
+      }
+      .p-item.tall {
+        grid-row: span 2;
+      }
+      .i1 {
+        grid-column: span 2;
+        grid-row: span 2;
+        background: linear-gradient(160deg, var(--rose-soft), var(--rose));
+      }
+      .i2 {
+        background: var(--stone);
+      }
+      .i3 {
+        background: var(--coffee);
+        grid-row: span 2;
+      }
+      .i4 {
+        background: linear-gradient(160deg, var(--cream), var(--camel));
+        grid-column: span 2;
+      }
+      .i5 {
+        background: var(--wisteria-soft);
+      }
+      .i6 {
+        background: var(--green);
+        grid-column: span 2;
+      }
+      .i7 {
+        background: var(--rose);
+        grid-row: span 2;
+      }
+      .i8 {
+        background: var(--stone);
+      }
+      .i9 {
+        background: linear-gradient(160deg, var(--coffee), var(--wisteria));
+        grid-column: span 2;
+      }
+      .portfolio-note {
+        margin-top: 26px;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
 
-  /* ---------- VIDEO ---------- */
-  .video-section{ background:var(--bg-alt); }
-  .video-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-  @media (max-width:820px){ .video-grid{ grid-template-columns:1fr; } }
-  .video-card{
-    aspect-ratio:9/12; border-radius:var(--radius-md); position:relative; overflow:hidden;
-    display:flex; align-items:flex-end; padding:22px; color:var(--bg);
-  }
-  .v1{ background:linear-gradient(200deg,#4b433b,var(--rose)); }
-  .v2{ background:linear-gradient(200deg,#4b433b,var(--green)); }
-  .v3{ background:linear-gradient(200deg,#4b433b,var(--wisteria)); }
-  .video-card h4{ font-size:16px; font-weight:500; font-family:"Noto Serif SC",serif; }
-  .video-card small{ opacity:.75; font-size:12px; }
-  .play-btn{
-    position:absolute; top:22px; right:22px; width:44px; height:44px; border-radius:50%;
-    background:rgba(247,241,229,0.9); display:flex; align-items:center; justify-content:center;
-  }
-  .play-btn::before{
-    content:""; width:0; height:0; border-style:solid;
-    border-width:7px 0 7px 11px; border-color:transparent transparent transparent var(--ink);
-    margin-left:2px;
-  }
+      /* ---------- VIDEO ---------- */
+      .video-section {
+        background: var(--bg-alt);
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+      @media (max-width: 820px) {
+        .video-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .video-card {
+        aspect-ratio: 9/12;
+        border-radius: var(--radius-md);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        padding: 22px;
+        color: var(--bg);
+      }
+      .v1 {
+        background: linear-gradient(200deg, #4b433b, var(--rose));
+      }
+      .v2 {
+        background: linear-gradient(200deg, #4b433b, var(--green));
+      }
+      .v3 {
+        background: linear-gradient(200deg, #4b433b, var(--wisteria));
+      }
+      .video-card h4 {
+        font-size: 16px;
+        font-weight: 500;
+        font-family: "Noto Serif SC", serif;
+      }
+      .video-card small {
+        opacity: 0.75;
+        font-size: 12px;
+      }
+      .play-btn {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(247, 241, 229, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .play-btn::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 7px 0 7px 11px;
+        border-color: transparent transparent transparent var(--ink);
+        margin-left: 2px;
+      }
 
-  /* ---------- TESTIMONIAL ---------- */
-  .testimonial{
-    text-align:center; max-width:720px; margin:0 auto; padding:120px 32px;
-  }
-  .testimonial p{
-    font-family:"Noto Serif SC",serif; font-size:clamp(20px,2.6vw,28px); line-height:1.6; color:var(--ink);
-  }
-  .testimonial cite{ display:block; margin-top:28px; font-style:normal; font-size:14px; color:var(--ink-soft); }
+      /* ---------- TESTIMONIAL ---------- */
+      .testimonial {
+        text-align: center;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 120px 32px;
+      }
+      .testimonial p {
+        font-family: "Noto Serif SC", serif;
+        font-size: clamp(20px, 2.6vw, 28px);
+        line-height: 1.6;
+        color: var(--ink);
+      }
+      .testimonial cite {
+        display: block;
+        margin-top: 28px;
+        font-style: normal;
+        font-size: 14px;
+        color: var(--ink-soft);
+      }
 
-  /* ---------- BOOKING / CONTACT ---------- */
-  .booking{ background:var(--ink); color:var(--bg); border-radius:var(--radius-lg); padding:70px 60px; }
-  @media (max-width:700px){ .booking{ padding:46px 26px; } }
-  .booking-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; }
-  @media (max-width:820px){ .booking-grid{ grid-template-columns:1fr; gap:36px; } }
-  .booking h2{ font-size:clamp(26px,3.2vw,36px); margin-bottom:18px; }
-  .booking p.lead{ color:rgba(247,241,229,0.7); max-width:38ch; margin-bottom:30px; font-size:15px; }
-  .contact-list div{ display:flex; justify-content:space-between; padding:16px 0; border-bottom:1px solid rgba(247,241,229,0.16); font-size:14px; }
-  .contact-list div span:first-child{ color:rgba(247,241,229,0.55); }
+      /* ---------- BOOKING / CONTACT ---------- */
+      .booking {
+        background: var(--ink);
+        color: var(--bg);
+        border-radius: var(--radius-lg);
+        padding: 70px 60px;
+      }
+      @media (max-width: 700px) {
+        .booking {
+          padding: 46px 26px;
+        }
+      }
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+      }
+      @media (max-width: 820px) {
+        .booking-grid {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+      }
+      .booking h2 {
+        font-size: clamp(26px, 3.2vw, 36px);
+        margin-bottom: 18px;
+      }
+      .booking p.lead {
+        color: rgba(247, 241, 229, 0.7);
+        max-width: 38ch;
+        margin-bottom: 30px;
+        font-size: 15px;
+      }
+      .contact-list div {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(247, 241, 229, 0.16);
+        font-size: 14px;
+      }
+      .contact-list div span:first-child {
+        color: rgba(247, 241, 229, 0.55);
+      }
 
-  form.book-form{ display:flex; flex-direction:column; gap:14px; }
-  .book-form input, .book-form select, .book-form textarea{
-    background:transparent; border:1px solid rgba(247,241,229,0.28); color:var(--bg);
-    padding:14px 16px; border-radius:10px; font-family:inherit; font-size:14px;
-  }
-  .book-form input::placeholder, .book-form textarea::placeholder{ color:rgba(247,241,229,0.45); }
-  .book-form button{
-    margin-top:6px; background:var(--rose); color:var(--ink); border:none;
-    padding:15px; border-radius:10px; font-size:15px; cursor:pointer; transition:background .25s ease;
-  }
-  .book-form button:hover{ background:var(--rose-soft); }
+      form.book-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .book-form input,
+      .book-form select,
+      .book-form textarea {
+        background: transparent;
+        border: 1px solid rgba(247, 241, 229, 0.28);
+        color: var(--bg);
+        padding: 14px 16px;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 14px;
+      }
+      .book-form input::placeholder,
+      .book-form textarea::placeholder {
+        color: rgba(247, 241, 229, 0.45);
+      }
+      .book-form button {
+        margin-top: 6px;
+        background: var(--rose);
+        color: var(--ink);
+        border: none;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background 0.25s ease;
+      }
+      .book-form button:hover {
+        background: var(--rose-soft);
+      }
 
-  /* ---------- FOOTER ---------- */
-  footer{ padding:50px 0; }
-  .footer-row{
-    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
-    font-size:13px; color:var(--ink-soft);
-  }
-  .footer-social{ display:flex; gap:20px; }
-</style>
-</head>
-<body>
-
-<header>
-  <nav class="wrap">
-    <div class="nav-logo logotype">Hanna</div>
-    <div class="nav-links">
-      <a href="#about">關於</a>
-      <a href="#services">服務項目</a>
-      <a href="#portfolio">作品集</a>
-      <a href="#video">影音</a>
-      <a href="#booking">預約</a>
-    </div>
-    <a href="#booking" class="nav-cta">預約諮詢</a>
-  </nav>
-</header>
-
-<main>
-
-  <!-- HERO -->
-  <section class="hero wrap">
-    <div>
-      <div class="eyebrow">MAKEUP &amp; HAIR ARTIST</div>
-      <h1>讓每一次上妝，<br>成為妳的高光時刻</h1>
-      <p class="lead">Hanna 專注於婚禮、時尚棚拍與個人形象妝造，擅長以細膩的色彩層次，勾勒出屬於每個人的自然氣色。</p>
-      <div class="btn-row">
-        <a href="#portfolio" class="btn btn-primary">查看作品集</a>
-        <a href="#booking" class="btn btn-ghost">預約諮詢</a>
-      </div>
-    </div>
-    <div class="palette-cluster" aria-hidden="true">
-      <div class="pan p1"></div>
-      <div class="pan p2"></div>
-      <div class="pan p3"></div>
-      <div class="pan p4"></div>
-      <div class="pan p5"></div>
-      <div class="pan p6"></div>
-      <div class="pan p7"></div>
-      <div class="pan p8"></div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="wrap about-grid">
-      <div class="about-portrait"></div>
-      <div class="about-copy">
-        <div class="eyebrow">關於 HANNA</div>
-        <h2 style="font-size:32px; margin-bottom:22px;">從肌理出發的<br>色彩語言</h2>
-        <p>從事妝髮造型工作多年，Hanna 相信好的妝容不是覆蓋，而是<strong>放大原本就存在的美</strong>。每次接案前，都會先了解客人的膚況、輪廓與想傳達的氛圍，再挑選最合適的色調與質地。</p>
-        <p>不論是需要維持一整天的婚禮妝造，或是講求視覺張力的時尚棚拍，都能依照場景與光線，調配出最恰當的層次與飽和度。</p>
-        <div class="about-stats">
-          <div><span>200+</span><small>完成案件</small></div>
-          <div><span>8</span><small>年妝造經驗</small></div>
-          <div><span>4.9</span><small>客戶評價</small></div>
+      /* ---------- FOOTER ---------- */
+      footer {
+        padding: 50px 0;
+      }
+      .footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+      .footer-social {
+        display: flex;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="wrap">
+        <div class="nav-logo logotype">Hanna</div>
+        <div class="nav-links">
+          <a href="#about">關於</a>
+          <a href="#services">服務項目</a>
+          <a href="#portfolio">作品集</a>
+          <a href="#video">影音</a>
+          <a href="#booking">預約</a>
         </div>
-      </div>
-    </div>
-  </section>
+        <a href="#booking" class="nav-cta">預約諮詢</a>
+      </nav>
+    </header>
 
-  <!-- SERVICES -->
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>服務項目</h2>
-        <div class="num">Services</div>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-dot" style="background:var(--rose);"></div>
-          <h3>新娘妝造</h3>
-          <p>迎娶、午宴、晚宴多套造型，含試妝諮詢與全程跟妝。</p>
+    <main>
+      <!-- HERO -->
+      <section class="hero wrap">
+        <div>
+          <div class="eyebrow">MAKEUP &amp; HAIR ARTIST</div>
+          <h1>讓每一次上妝，<br />成為妳的高光時刻</h1>
+          <p class="lead">
+            Hanna
+            專注於婚禮、時尚棚拍與個人形象妝造，擅長以細膩的色彩層次，勾勒出屬於每個人的自然氣色。
+          </p>
+          <div class="btn-row">
+            <a href="#portfolio" class="btn btn-primary">查看作品集</a>
+            <a href="#booking" class="btn btn-ghost">預約諮詢</a>
+          </div>
         </div>
-        <div class="service-card">
-          <div class="service-dot" style="background:var(--camel);"></div>
-          <h3>時尚棚拍</h3>
-          <p>雜誌、型錄、形象照拍攝妝髮，依燈光與風格調整妝感。</p>
+        <div class="palette-cluster" aria-hidden="true">
+          <div class="pan p1"></div>
+          <div class="pan p2"></div>
+          <div class="pan p3"></div>
+          <div class="pan p4"></div>
+          <div class="pan p5"></div>
+          <div class="pan p6"></div>
+          <div class="pan p7"></div>
+          <div class="pan p8"></div>
         </div>
-        <div class="service-card">
-          <div class="service-dot" style="background:var(--green);"></div>
-          <h3>個人形象妝造</h3>
-          <p>面試、社群、約會等日常場合，打造自然好氣色。</p>
-        </div>
-        <div class="service-card">
-          <div class="service-dot" style="background:var(--wisteria);"></div>
-          <h3>一對一妝容課程</h3>
-          <p>從打底到上妝手法，帶你建立適合自己的日常妝容邏輯。</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- PORTFOLIO -->
-  <section id="portfolio">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>作品集</h2>
-        <div class="num">Selected Work</div>
-      </div>
-      <div class="portfolio-grid">
-        <div class="p-item i1"><span>陶瓷肌 · 婚禮迎娶妝</span></div>
-        <div class="p-item i2"><span>裸色棚拍</span></div>
-        <div class="p-item i3"><span>晚宴造型</span></div>
-        <div class="p-item i4"><span>復古眼妝</span></div>
-        <div class="p-item i5"><span>紫調煙燻</span></div>
-        <div class="p-item i6"><span>編輯風主視覺</span></div>
-        <div class="p-item i7"><span>戶外午宴妝</span></div>
-        <div class="p-item i8"><span>日常通勤妝</span></div>
-        <div class="p-item i9"><span>棕調氣質妝</span></div>
-      </div>
-      <p class="portfolio-note">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
-    </div>
-  </section>
-
-  <!-- VIDEO -->
-  <section class="video-section" id="video">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>影音紀錄</h2>
-        <div class="num">Reels</div>
-      </div>
-      <div class="video-grid">
-        <div class="video-card v1">
-          <div class="play-btn"></div>
-          <div><h4>妝前妝後轉場</h4><small>00:32</small></div>
-        </div>
-        <div class="video-card v2">
-          <div class="play-btn"></div>
-          <div><h4>新娘妝造全紀錄</h4><small>02:10</small></div>
-        </div>
-        <div class="video-card v3">
-          <div class="play-btn"></div>
-          <div><h4>棚拍幕後花絮</h4><small>01:05</small></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <div class="wrap">
-    <div class="testimonial">
-      <p>「Hanna 很懂得怎麼用最少的顏色，畫出最耐看的層次。整場婚禮從早妝到晚宴都完全不脫妝。」</p>
-      <cite>— 新娘 / Wei</cite>
-    </div>
-  </div>
-
-  <!-- BOOKING -->
-  <section id="booking">
-    <div class="wrap">
-      <div class="booking">
-        <div class="booking-grid">
-          <div>
-            <div class="eyebrow" style="color:rgba(247,241,229,0.6);">預約諮詢</div>
-            <h2>想預約 Hanna 為你妝造？</h2>
-            <p class="lead">請留下你的活動日期與需求，將於一個工作天內回覆確認。</p>
-            <div class="contact-list">
-              <div><span>Line</span><span>@hanna.makeup</span></div>
-              <div><span>Email</span><span>hello@hannamakeup.com</span></div>
-              <div><span>服務地區</span><span>台北 / 可外約</span></div>
+      <!-- ABOUT -->
+      <section class="about" id="about">
+        <div class="wrap about-grid">
+          <div class="about-portrait"></div>
+          <div class="about-copy">
+            <div class="eyebrow">關於 HANNA</div>
+            <h2 style="font-size: 32px; margin-bottom: 22px">從肌理出發的<br />色彩語言</h2>
+            <p>
+              從事妝髮造型工作多年，Hanna
+              相信好的妝容不是覆蓋，而是<strong>放大原本就存在的美</strong>。每次接案前，都會先了解客人的膚況、輪廓與想傳達的氛圍，再挑選最合適的色調與質地。
+            </p>
+            <p>
+              不論是需要維持一整天的婚禮妝造，或是講求視覺張力的時尚棚拍，都能依照場景與光線，調配出最恰當的層次與飽和度。
+            </p>
+            <div class="about-stats">
+              <div><span>200+</span><small>完成案件</small></div>
+              <div><span>8</span><small>年妝造經驗</small></div>
+              <div><span>4.9</span><small>客戶評價</small></div>
             </div>
           </div>
-          <form class="book-form" onsubmit="return false;">
-            <input type="text" placeholder="姓名">
-            <input type="text" placeholder="聯絡方式（電話或 Line）">
-            <select>
-              <option>新娘妝造</option>
-              <option>時尚棚拍</option>
-              <option>個人形象妝造</option>
-              <option>一對一課程</option>
-            </select>
-            <input type="date">
-            <textarea rows="3" placeholder="想跟 Hanna 說的話"></textarea>
-            <button type="submit">送出預約需求</button>
-          </form>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>服務項目</h2>
+            <div class="num">Services</div>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-dot" style="background: var(--rose)"></div>
+              <h3>新娘妝造</h3>
+              <p>迎娶、午宴、晚宴多套造型，含試妝諮詢與全程跟妝。</p>
+            </div>
+            <div class="service-card">
+              <div class="service-dot" style="background: var(--camel)"></div>
+              <h3>時尚棚拍</h3>
+              <p>雜誌、型錄、形象照拍攝妝髮，依燈光與風格調整妝感。</p>
+            </div>
+            <div class="service-card">
+              <div class="service-dot" style="background: var(--green)"></div>
+              <h3>個人形象妝造</h3>
+              <p>面試、社群、約會等日常場合，打造自然好氣色。</p>
+            </div>
+            <div class="service-card">
+              <div class="service-dot" style="background: var(--wisteria)"></div>
+              <h3>一對一妝容課程</h3>
+              <p>從打底到上妝手法，帶你建立適合自己的日常妝容邏輯。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>作品集</h2>
+            <div class="num">Selected Work</div>
+          </div>
+          <div class="portfolio-grid">
+            <div class="p-item i1"><span>陶瓷肌 · 婚禮迎娶妝</span></div>
+            <div class="p-item i2"><span>裸色棚拍</span></div>
+            <div class="p-item i3"><span>晚宴造型</span></div>
+            <div class="p-item i4"><span>復古眼妝</span></div>
+            <div class="p-item i5"><span>紫調煙燻</span></div>
+            <div class="p-item i6"><span>編輯風主視覺</span></div>
+            <div class="p-item i7"><span>戶外午宴妝</span></div>
+            <div class="p-item i8"><span>日常通勤妝</span></div>
+            <div class="p-item i9"><span>棕調氣質妝</span></div>
+          </div>
+          <p class="portfolio-note">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="video-section" id="video">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>影音紀錄</h2>
+            <div class="num">Reels</div>
+          </div>
+          <div class="video-grid">
+            <div class="video-card v1">
+              <div class="play-btn"></div>
+              <div>
+                <h4>妝前妝後轉場</h4>
+                <small>00:32</small>
+              </div>
+            </div>
+            <div class="video-card v2">
+              <div class="play-btn"></div>
+              <div>
+                <h4>新娘妝造全紀錄</h4>
+                <small>02:10</small>
+              </div>
+            </div>
+            <div class="video-card v3">
+              <div class="play-btn"></div>
+              <div>
+                <h4>棚拍幕後花絮</h4>
+                <small>01:05</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL -->
+      <div class="wrap">
+        <div class="testimonial">
+          <p>
+            「Hanna 很懂得怎麼用最少的顏色，畫出最耐看的層次。整場婚禮從早妝到晚宴都完全不脫妝。」
+          </p>
+          <cite>— 新娘 / Wei</cite>
         </div>
       </div>
-    </div>
-  </section>
 
-</main>
+      <!-- BOOKING -->
+      <section id="booking">
+        <div class="wrap">
+          <div class="booking">
+            <div class="booking-grid">
+              <div>
+                <div class="eyebrow" style="color: rgba(247, 241, 229, 0.6)">預約諮詢</div>
+                <h2>想預約 Hanna 為你妝造？</h2>
+                <p class="lead">請留下你的活動日期與需求，將於一個工作天內回覆確認。</p>
+                <div class="contact-list">
+                  <div><span>Line</span><span>@hanna.makeup</span></div>
+                  <div><span>Email</span><span>hello@hannamakeup.com</span></div>
+                  <div><span>服務地區</span><span>台北 / 可外約</span></div>
+                </div>
+              </div>
+              <form class="book-form" onsubmit="return false;">
+                <input type="text" placeholder="姓名" />
+                <input type="text" placeholder="聯絡方式（電話或 Line）" />
+                <select>
+                  <option>新娘妝造</option>
+                  <option>時尚棚拍</option>
+                  <option>個人形象妝造</option>
+                  <option>一對一課程</option>
+                </select>
+                <input type="date" />
+                <textarea rows="3" placeholder="想跟 Hanna 說的話"></textarea>
+                <button type="submit">送出預約需求</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-<footer>
-  <div class="wrap footer-row">
-    <div class="logotype" style="font-size:20px; color:var(--ink);">Hanna</div>
-    <div>© 2026 Hanna Makeup Studio. All rights reserved.</div>
-    <div class="footer-social">
-      <a href="#">Instagram</a>
-      <a href="#">Line</a>
-      <a href="#">小紅書</a>
-    </div>
-  </div>
-</footer>
-
-</body>
+    <footer>
+      <div class="wrap footer-row">
+        <div class="logotype" style="font-size: 20px; color: var(--ink)">Hanna</div>
+        <div>© 2026 Hanna Makeup Studio. All rights reserved.</div>
+        <div class="footer-social">
+          <a href="#">Instagram</a>
+          <a href="#">Line</a>
+          <a href="#">小紅書</a>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
