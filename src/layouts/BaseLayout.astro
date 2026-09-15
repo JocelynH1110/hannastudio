@@ -25,12 +25,19 @@ const { title = "Hanna｜妝造設計" } = Astro.props;
   <IconSprite />
   <slot />
   <script>
+    const HEADER_HEIGHT = 78;
+
     function scrollSectionToCenter(id: string) {
       const target = document.getElementById(id);
       if (!target) return;
       const rect = target.getBoundingClientRect();
-      const elementCenter = rect.top + rect.height / 2 + window.scrollY;
-      const top = Math.max(0, elementCenter - window.innerHeight / 2);
+      const sectionTop = rect.top + window.scrollY;
+      const elementCenter = sectionTop + rect.height / 2;
+      const centeredTop = elementCenter - window.innerHeight / 2;
+      // Never scroll past the section's own top edge — a section taller
+      // than the viewport would otherwise center on its middle and push
+      // the heading off-screen above.
+      const top = Math.max(0, Math.min(centeredTop, sectionTop - HEADER_HEIGHT));
       window.scrollTo({ top, behavior: "smooth" });
     }
 
