@@ -1,3 +1,23 @@
+## Handover doc
+
+`HANDOVER.md` is not committed in plaintext — this repo is public, and it
+contains internal notes not meant for public visibility. The encrypted
+version, `HANDOVER.md.age`, is tracked instead (encrypted with `age` for
+GitHub users JocelynH1110 and moroz's SSH keys as recipients).
+
+To read it, decrypt with a matching SSH private key:
+
+```
+age -d -i ~/.ssh/id_ed25519 HANDOVER.md.age > HANDOVER.md
+```
+
+To update it: edit the decrypted `HANDOVER.md`, then re-encrypt and
+re-stage the `.age` file (the plaintext stays gitignored):
+
+```
+age -r <recipient1> -r <recipient2> ... -o HANDOVER.md.age HANDOVER.md
+```
+
 ## Development
 
 When starting the dev server, use background mode:
