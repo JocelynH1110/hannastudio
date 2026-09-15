@@ -1,0 +1,32 @@
+---
+const items = [
+  { cls: "col-span-2 row-span-2 bg-[linear-gradient(160deg,var(--color-rose-soft),var(--color-rose))]", label: "陶瓷肌 · 婚禮迎娶妝" },
+  { cls: "bg-stone", label: "裸色棚拍" },
+  { cls: "bg-coffee row-span-2", label: "晚宴造型" },
+  { cls: "col-span-2 bg-[linear-gradient(160deg,var(--color-cream),var(--color-camel))]", label: "復古眼妝" },
+  { cls: "bg-wisteria-soft", label: "紫調煙燻" },
+  { cls: "col-span-2 bg-green", label: "編輯風主視覺" },
+  { cls: "row-span-2 bg-rose", label: "戶外午宴妝" },
+  { cls: "bg-stone", label: "日常通勤妝" },
+  { cls: "col-span-2 bg-[linear-gradient(160deg,var(--color-coffee),var(--color-wisteria))]", label: "棕調氣質妝" },
+];
+---
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>作品集</h2>
+      <div class="num">Selected Work</div>
+    </div>
+    <div
+      class="grid grid-cols-6 auto-rows-[150px] gap-[14px] max-[900px]:grid-cols-3 max-[900px]:auto-rows-[130px] max-[560px]:grid-cols-2 max-[560px]:auto-rows-[120px]"
+    >
+      {items.map((item) => (
+        <div class={`relative flex items-end overflow-hidden rounded-sm p-4 ${item.cls}`}>
+          <span class="relative text-[13px] text-[rgba(58,49,42,0.75)]">{item.label}</span>
+        </div>
+      ))}
+    </div>
+    <p class="mt-[26px] text-[13px] text-ink-soft">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
+  </div>
+</section>

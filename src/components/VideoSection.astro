@@ -1,0 +1,30 @@
+---
+const videos = [
+  { cls: "bg-[linear-gradient(200deg,#4b433b,var(--color-rose))]", title: "妝前妝後轉場", duration: "00:32" },
+  { cls: "bg-[linear-gradient(200deg,#4b433b,var(--color-green))]", title: "新娘妝造全紀錄", duration: "02:10" },
+  { cls: "bg-[linear-gradient(200deg,#4b433b,var(--color-wisteria))]", title: "棚拍幕後花絮", duration: "01:05" },
+];
+---
+
+<section id="video" class="bg-bg-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>影音紀錄</h2>
+      <div class="num">Reels</div>
+    </div>
+    <div class="grid grid-cols-3 gap-6 max-[820px]:grid-cols-1">
+      {videos.map((video) => (
+        <div class={`relative flex aspect-[9/12] items-end overflow-hidden rounded-md p-[22px] text-bg ${video.cls}`}>
+          <div
+            class="absolute right-[22px] top-[22px] flex h-11 w-11 items-center justify-center rounded-full bg-bg/90 before:ml-0.5 before:border-solid before:content-[''] before:[border-color:transparent_transparent_transparent_var(--color-ink)] before:[border-width:7px_0_7px_11px]"
+          >
+          </div>
+          <div>
+            <h4 class="font-serif text-base font-medium">{video.title}</h4>
+            <small class="text-xs opacity-75">{video.duration}</small>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

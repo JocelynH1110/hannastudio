@@ -1,0 +1,26 @@
+---
+const services = [
+  { color: "var(--color-rose)", title: "新娘妝造", desc: "迎娶、午宴、晚宴多套造型，含試妝諮詢與全程跟妝。" },
+  { color: "var(--color-camel)", title: "時尚棚拍", desc: "雜誌、型錄、形象照拍攝妝髮，依燈光與風格調整妝感。" },
+  { color: "var(--color-green)", title: "個人形象妝造", desc: "面試、社群、約會等日常場合，打造自然好氣色。" },
+  { color: "var(--color-wisteria)", title: "一對一妝容課程", desc: "從打底到上妝手法，帶你建立適合自己的日常妝容邏輯。" },
+];
+---
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>服務項目</h2>
+      <div class="num">Services</div>
+    </div>
+    <div class="grid grid-cols-4 gap-px overflow-hidden rounded-md border border-line bg-line max-[900px]:grid-cols-2 max-[520px]:grid-cols-1">
+      {services.map((service) => (
+        <div class="bg-bg px-7 py-[38px] transition-colors duration-300 hover:bg-bg-alt">
+          <div class="mb-[22px] h-[14px] w-[14px] rounded-full" style={`background:${service.color};`}></div>
+          <h3 class="mb-3 text-[19px] font-semibold">{service.title}</h3>
+          <p class="text-sm text-ink-soft">{service.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

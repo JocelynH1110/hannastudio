@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #F7F1E5;
+  --color-bg-alt: #EFE6D6;
+  --color-ink: #3A312A;
+  --color-ink-soft: #6B5E52;  /* deepened from #7A6D61 for WCAG AA contrast on bg/bg-alt */
+  --color-line: rgba(58, 49, 42, 0.14);
+
+  --color-rose: #C79790;      /* 脏粉 dirty pink, deepened */
+  --color-rose-text: #9C665C; /* same rose family, deepened further for use as text (WCAG AA on bg) */
+  --color-rose-soft: #E7D3CD; /* 肉桂粉 cinnamon pink */
+  --color-coffee: #C7B39C;    /* 奶咖 milk coffee */
+  --color-camel: #A9835F;     /* 米驼 rice camel, deepened */
+  --color-cream: #F1DFB9;     /* 暖黄 warm yellow */
+  --color-wisteria: #B69EC0;  /* 玉紫藤 deepened */
+  --color-wisteria-soft: #E4D7E6;
+  --color-green: #6C8B79;     /* 复古绿 */
+  --color-stone: #D7D0C2;     /* 杏子灰 / 淡雅灰 */
+
+  --radius-lg: 40px;
+  --radius-md: 22px;
+  --radius-sm: 10px;
+
+  --font-sans: "Noto Sans SC", sans-serif;
+  --font-serif: "Noto Serif SC", serif;
+  --font-logo: "Cormorant Garamond", serif;
+
+  --animate-pop: pop 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes pop {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg text-ink font-sans font-light leading-[1.7] antialiased;
+  }
+  h1, h2, h3 {
+    @apply font-serif font-semibold tracking-[0.02em];
+  }
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[1160px] px-8 max-[720px]:px-[22px];
+  }
+  .logotype {
+    @apply font-logo italic font-medium;
+  }
+  .eyebrow {
+    @apply mb-[22px] text-sm tracking-[0.08em] text-ink-soft before:mr-[10px] before:inline-block before:h-px before:w-[22px] before:bg-camel before:align-middle before:content-[''];
+  }
+  .btn {
+    @apply inline-flex items-center gap-[10px] rounded-full px-[30px] py-[15px] text-[15px] transition;
+  }
+  .btn-primary {
+    @apply bg-ink text-bg hover:-translate-y-0.5 hover:bg-rose;
+  }
+  .btn-ghost {
+    @apply border border-line text-ink hover:-translate-y-0.5 hover:border-ink;
+  }
+  .section-head {
+    @apply mb-14 flex items-end justify-between gap-6 border-b border-line pb-[26px] max-[600px]:flex-col max-[600px]:items-start max-[600px]:gap-2.5;
+  }
+  .section-head h2 {
+    @apply text-[clamp(28px,3.4vw,40px)];
+  }
+  .section-head .num {
+    @apply font-logo text-xl italic text-ink-soft;
+  }
+  .pan {
+    @apply absolute scale-[0.6] rounded-full opacity-0 shadow-[inset_0_0_0_1px_rgba(58,49,42,0.06)];
+    animation: var(--animate-pop);
+  }
+}

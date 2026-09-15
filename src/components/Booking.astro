@@ -1,0 +1,139 @@
+---
+---
+
+<section id="booking">
+  <div class="wrap">
+    <div class="rounded-lg bg-ink px-[60px] py-[70px] text-bg max-[700px]:px-[26px] max-[700px]:py-[46px]">
+      <div class="grid grid-cols-2 gap-[60px] max-[820px]:grid-cols-1 max-[820px]:gap-9">
+        <div>
+          <div class="eyebrow text-[rgba(247,241,229,0.6)]">預約諮詢</div>
+          <h2 class="mb-[18px] text-[clamp(26px,3.2vw,36px)]">想預約 Hanna 為你妝造？</h2>
+          <p class="mb-[30px] max-w-[38ch] text-[15px] text-[rgba(247,241,229,0.7)]">
+            請留下你的活動日期與需求，將於一個工作天內回覆確認。
+          </p>
+          <div>
+            <div class="flex justify-between border-b border-[rgba(247,241,229,0.16)] py-4 text-sm">
+              <span class="text-[rgba(247,241,229,0.55)]">Line</span><span>@hanna.makeup</span>
+            </div>
+            <div class="flex justify-between border-b border-[rgba(247,241,229,0.16)] py-4 text-sm">
+              <span class="text-[rgba(247,241,229,0.55)]">Email</span><span>hello@hannamakeup.com</span>
+            </div>
+            <div class="flex justify-between border-b border-[rgba(247,241,229,0.16)] py-4 text-sm">
+              <span class="text-[rgba(247,241,229,0.55)]">服務地區</span><span>台北 / 可外約</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <form
+            id="booking-form"
+            name="booking"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            class="flex flex-col gap-[14px]"
+          >
+            <input type="hidden" name="form-name" value="booking" />
+            <p class="hidden">
+              <label>
+                請勿填寫，此欄位為防止機器人送出<input name="bot-field" />
+              </label>
+            </p>
+
+            <label for="booking-name" class="sr-only">姓名</label>
+            <input
+              id="booking-name"
+              type="text"
+              name="name"
+              placeholder="姓名"
+              required
+              class="rounded-[10px] border border-[rgba(247,241,229,0.28)] bg-transparent px-4 py-[14px] text-sm placeholder:text-[rgba(247,241,229,0.45)]"
+            />
+
+            <label for="booking-contact" class="sr-only">聯絡方式（電話或 Line）</label>
+            <input
+              id="booking-contact"
+              type="text"
+              name="contact"
+              placeholder="聯絡方式（電話或 Line）"
+              required
+              class="rounded-[10px] border border-[rgba(247,241,229,0.28)] bg-transparent px-4 py-[14px] text-sm placeholder:text-[rgba(247,241,229,0.45)]"
+            />
+
+            <label for="booking-service" class="sr-only">服務項目</label>
+            <select
+              id="booking-service"
+              name="service"
+              class="rounded-[10px] border border-[rgba(247,241,229,0.28)] bg-transparent px-4 py-[14px] text-sm"
+            >
+              <option>新娘妝造</option>
+              <option>時尚棚拍</option>
+              <option>個人形象妝造</option>
+              <option>一對一課程</option>
+            </select>
+
+            <label for="booking-date" class="sr-only">活動日期</label>
+            <input
+              id="booking-date"
+              type="date"
+              name="event_date"
+              class="rounded-[10px] border border-[rgba(247,241,229,0.28)] bg-transparent px-4 py-[14px] text-sm"
+            />
+
+            <label for="booking-message" class="sr-only">想跟 Hanna 說的話</label>
+            <textarea
+              id="booking-message"
+              name="message"
+              rows="3"
+              placeholder="想跟 Hanna 說的話"
+              class="rounded-[10px] border border-[rgba(247,241,229,0.28)] bg-transparent px-4 py-[14px] text-sm placeholder:text-[rgba(247,241,229,0.45)]"
+            ></textarea>
+
+            <button
+              type="submit"
+              class="mt-1.5 rounded-[10px] bg-rose px-[15px] py-[15px] text-[15px] text-ink transition-colors duration-300 hover:bg-rose-soft"
+            >
+              送出預約需求
+            </button>
+          </form>
+
+          <div id="booking-feedback" role="status" class="hidden rounded-[10px] border border-[rgba(247,241,229,0.28)] px-4 py-[14px] text-sm">
+            已收到你的預約需求，Hanna 將於一個工作天內回覆確認。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("booking-form");
+  const feedback = document.getElementById("booking-feedback");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!(form instanceof HTMLFormElement) || !feedback) return;
+
+    const data = new FormData(form);
+    const body = new URLSearchParams();
+    for (const [key, value] of data.entries()) {
+      body.append(key, value.toString());
+    }
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+      if (!response.ok) throw new Error(`Submission failed: ${response.status}`);
+
+      form.hidden = true;
+      feedback.textContent = "已收到你的預約需求，Hanna 將於一個工作天內回覆確認。";
+      feedback.hidden = false;
+    } catch (err) {
+      feedback.textContent = "送出失敗，請稍後再試，或直接透過 Line／Email 與我們聯繫。";
+      feedback.hidden = false;
+    }
+  });
+</script>
