@@ -94,7 +94,7 @@ import Icon from "./Icon.astro";
                 type="text"
                 name="name"
                 required
-                class="rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
+                class="appearance-none rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
               />
             </div>
 
@@ -105,22 +105,28 @@ import Icon from "./Icon.astro";
                 type="text"
                 name="contact"
                 required
-                class="rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
+                class="appearance-none rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
               />
             </div>
 
             <div class="flex flex-col gap-1.5">
               <label for="booking-service" class="text-[14px] uppercase tracking-[0.08em] text-[rgba(247,241,229,0.78)]">服務項目</label>
-              <select
-                id="booking-service"
-                name="service"
-                class="rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
-              >
-                <option>新娘妝造</option>
-                <option>時尚棚拍</option>
-                <option>個人形象妝造</option>
-                <option>一對一課程</option>
-              </select>
+              <div class="relative">
+                <select
+                  id="booking-service"
+                  name="service"
+                  class="w-full appearance-none rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent py-[14px] pl-4 pr-10 text-sm"
+                >
+                  <option>新娘妝造</option>
+                  <option>時尚棚拍</option>
+                  <option>個人形象妝造</option>
+                  <option>一對一課程</option>
+                </select>
+                <Icon
+                  name="chevron-down"
+                  class="pointer-events-none absolute right-4 top-1/2 h-[14px] w-[14px] -translate-y-1/2 text-[rgba(247,241,229,0.6)]"
+                />
+              </div>
             </div>
 
             <div class="flex flex-col gap-1.5">
@@ -139,13 +145,13 @@ import Icon from "./Icon.astro";
                 id="booking-message"
                 name="message"
                 rows="3"
-                class="rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
+                class="appearance-none rounded-[10px] border border-[rgba(247,241,229,0.5)] bg-transparent px-4 py-[14px] text-sm"
               ></textarea>
             </div>
 
             <button
               type="submit"
-              class="mt-1.5 rounded-[10px] bg-rose px-[15px] py-[15px] text-[15px] font-bold text-ink transition-colors duration-300 hover:bg-rose-soft"
+              class="mt-1.5 cursor-pointer rounded-[10px] bg-rose px-[15px] py-[15px] text-[15px] font-bold text-ink transition-colors duration-300 hover:bg-rose-soft"
             >
               送出預約需求
             </button>
@@ -161,6 +167,14 @@ import Icon from "./Icon.astro";
 </section>
 
 <script>
+  // iOS Safari renders <input type="date"> completely blank when empty
+  // (unlike desktop browsers, which show a "dd/mm/yyyy" hint) — default
+  // it to today so it's never empty on load.
+  const dateInput = document.getElementById("booking-date");
+  if (dateInput instanceof HTMLInputElement && !dateInput.value) {
+    dateInput.value = new Date().toLocaleDateString("en-CA"); // YYYY-MM-DD
+  }
+
   const form = document.getElementById("booking-form");
   const feedback = document.getElementById("booking-feedback");
 

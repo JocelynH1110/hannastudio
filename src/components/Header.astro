@@ -4,7 +4,7 @@ import Icon from "./Icon.astro";
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/86 backdrop-blur-[10px]">
   <nav class="wrap flex h-[var(--header-height)] items-center justify-between">
-    <div class="logotype text-[26px]">Hanna</div>
+    <a href="/" class="logotype text-[26px]">Hanna Studio</a>
     <div class="flex gap-9 text-[15px] text-ink-soft max-[760px]:hidden">
       <a href="#about" class="transition-colors duration-300 hover:text-rose-text">關於</a>
       <a href="#services" class="transition-colors duration-300 hover:text-rose-text">服務項目</a>
@@ -25,7 +25,7 @@ import Icon from "./Icon.astro";
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="開啟選單"
-        class="hidden h-12 w-12 items-center justify-center rounded-full border border-ink text-ink max-[760px]:flex"
+        class="hidden h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-ink text-ink max-[760px]:flex"
       >
         <Icon id="mobile-menu-icon-open" name="menu" title="開啟選單" class="h-[24px] w-[24px]" />
         <Icon id="mobile-menu-icon-close" name="close" title="關閉選單" class="hidden h-[24px] w-[24px]" />
