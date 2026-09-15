@@ -12,7 +12,7 @@ const items = [
 ];
 ---
 
-<section id="portfolio">
+<section id="portfolio" class="pt-16 max-[720px]:pt-12">
   <div class="wrap">
     <div class="section-head">
       <h2>作品集</h2>
@@ -23,10 +23,10 @@ const items = [
     >
       {items.map((item) => (
         <div class={`relative flex items-end overflow-hidden rounded-sm p-4 ${item.cls}`}>
-          <span class="relative text-[13px] text-[rgba(58,49,42,0.75)]">{item.label}</span>
+          <span class="relative text-[14px] text-[rgba(58,49,42,0.75)]">{item.label}</span>
         </div>
       ))}
     </div>
-    <p class="mt-[26px] text-[13px] text-ink-soft">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
+    <p class="mt-[26px] text-[14px] text-ink-soft">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
   </div>
 </section>
