@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 ---
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/86 backdrop-blur-[10px]">
@@ -11,11 +12,57 @@
       <a href="#video" class="transition-colors duration-300 hover:text-rose-text">影音</a>
       <a href="#booking" class="transition-colors duration-300 hover:text-rose-text">預約</a>
     </div>
-    <a
-      href="#booking"
-      class="rounded-full border border-ink px-[22px] py-[10px] text-sm font-bold whitespace-nowrap transition-colors duration-300 hover:bg-ink hover:text-bg"
-    >
-      預約諮詢
-    </a>
+    <div class="flex items-center gap-3">
+      <a
+        href="#booking"
+        class="rounded-full border border-ink px-[22px] py-[10px] text-sm font-bold whitespace-nowrap transition-colors duration-300 hover:bg-ink hover:text-bg max-[420px]:hidden"
+      >
+        預約諮詢
+      </a>
+      <button
+        id="mobile-menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="開啟選單"
+        class="hidden h-10 w-10 items-center justify-center rounded-full border border-ink text-ink max-[760px]:flex"
+      >
+        <Icon id="mobile-menu-icon-open" name="menu" title="開啟選單" class="h-[18px] w-[18px]" />
+        <Icon id="mobile-menu-icon-close" name="close" title="關閉選單" class="hidden h-[18px] w-[18px]" />
+      </button>
+    </div>
   </nav>
+
+  <div id="mobile-menu" hidden class="border-t border-line bg-bg">
+    <div class="wrap flex flex-col py-2 text-[15px] text-ink-soft">
+      <a href="#about" class="border-b border-line py-3 transition-colors duration-300 hover:text-rose-text">關於</a>
+      <a href="#services" class="border-b border-line py-3 transition-colors duration-300 hover:text-rose-text">服務項目</a>
+      <a href="#portfolio" class="border-b border-line py-3 transition-colors duration-300 hover:text-rose-text">作品集</a>
+      <a href="#video" class="border-b border-line py-3 transition-colors duration-300 hover:text-rose-text">影音</a>
+      <a href="#booking" class="py-3 font-bold text-ink">預約諮詢</a>
+    </div>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("mobile-menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("mobile-menu-icon-open");
+  const iconClose = document.getElementById("mobile-menu-icon-close");
+
+  function setMenuOpen(open: boolean) {
+    toggle?.setAttribute("aria-expanded", String(open));
+    if (menu) menu.hidden = !open;
+    iconOpen?.classList.toggle("hidden", open);
+    iconClose?.classList.toggle("hidden", !open);
+  }
+
+  toggle?.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    setMenuOpen(!isOpen);
+  });
+
+  menu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+</script>

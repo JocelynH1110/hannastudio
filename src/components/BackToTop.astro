@@ -1,0 +1,30 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<button
+  id="back-to-top"
+  type="button"
+  aria-label="回到頂部"
+  title="回到頂部"
+  hidden
+  class="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-ink text-bg shadow-[0_4px_16px_rgba(58,49,42,0.28)] transition-colors duration-300 hover:bg-rose"
+>
+  <Icon name="arrow-up" title="回到頂部" class="h-[18px] w-[18px]" />
+</button>
+
+<script>
+  const button = document.getElementById("back-to-top");
+
+  function updateVisibility() {
+    if (!button) return;
+    button.hidden = window.scrollY < window.innerHeight;
+  }
+
+  window.addEventListener("scroll", updateVisibility, { passive: true });
+  updateVisibility();
+
+  button?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

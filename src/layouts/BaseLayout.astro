@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import IconSprite from "../components/IconSprite.astro";
+import BackToTop from "../components/BackToTop.astro";
 
 interface Props {
   title?: string;
@@ -24,31 +25,17 @@ const { title = "Hanna｜妝造設計" } = Astro.props;
 <body>
   <IconSprite />
   <slot />
+  <BackToTop />
   <script>
-    const HEADER_HEIGHT = 78;
-
+    // Native scrollIntoView({block:"center"}) instead of hand-computed
+    // pixel math — it correctly accounts for mobile browsers' dynamic
+    // chrome (e.g. iOS Safari's collapsing address bar), which a
+    // one-time window.innerHeight snapshot does not.
     function scrollSectionToCenter(id: string) {
       const target = document.getElementById(id);
       if (!target) return;
-      const rect = target.getBoundingClientRect();
-      const sectionTop = rect.top + window.scrollY;
-      const elementCenter = sectionTop + rect.height / 2;
-      let top = Math.max(0, elementCenter - window.innerHeight / 2);
-
-      // Keep the heading on-screen no matter how tall the section is,
-      // without over-constraining shorter sections that can genuinely
-      // center. Bound `top` so the heading stays between just-below-the
-      // -header and just-above-the-bottom-edge.
-      const heading = target.querySelector("h2");
-      if (heading) {
-        const headingTop = heading.getBoundingClientRect().top + window.scrollY;
-        const maxTop = headingTop - HEADER_HEIGHT;
-        const minTop = headingTop - window.innerHeight;
-        top = Math.min(top, maxTop);
-        top = Math.max(top, minTop);
-      }
-
-      window.scrollTo({ top, behavior: "smooth" });
+      const heading = target.querySelector("h2") ?? target;
+      heading.scrollIntoView({ behavior: "smooth", block: "center" });
     }
 
     document.addEventListener("click", (event) => {

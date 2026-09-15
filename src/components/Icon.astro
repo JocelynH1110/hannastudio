@@ -1,13 +1,14 @@
 ---
 interface Props {
-  name: "line" | "email" | "pin" | "facebook" | "instagram";
+  name: "line" | "email" | "pin" | "facebook" | "instagram" | "menu" | "close" | "arrow-up";
   title: string;
   class?: string;
+  id?: string;
 }
 
-const { name, title, class: className = "h-[18px] w-[18px]" } = Astro.props;
+const { name, title, class: className = "h-[18px] w-[18px]", id } = Astro.props;
 ---
 
-<svg class={className} role="img" aria-label={title}>
+<svg id={id} class={className} role="img" aria-label={title}>
   <use href={`#icon-${name}`} />
 </svg>
