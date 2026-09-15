@@ -26,27 +26,5 @@ const { title = "Hanna｜妝造設計" } = Astro.props;
   <IconSprite />
   <slot />
   <BackToTop />
-  <script>
-    // Native scrollIntoView({block:"center"}) instead of hand-computed
-    // pixel math — it correctly accounts for mobile browsers' dynamic
-    // chrome (e.g. iOS Safari's collapsing address bar), which a
-    // one-time window.innerHeight snapshot does not.
-    function scrollSectionToCenter(id: string) {
-      const target = document.getElementById(id);
-      if (!target) return;
-      const heading = target.querySelector("h2") ?? target;
-      heading.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-
-    document.addEventListener("click", (event) => {
-      const link = (event.target as HTMLElement).closest('a[href^="#"]');
-      if (!(link instanceof HTMLAnchorElement)) return;
-      const id = link.getAttribute("href")?.slice(1);
-      if (!id || !document.getElementById(id)) return;
-      event.preventDefault();
-      scrollSectionToCenter(id);
-      history.pushState(null, "", `#${id}`);
-    });
-  </script>
 </body>
 </html>
