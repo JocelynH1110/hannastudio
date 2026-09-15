@@ -68,7 +68,7 @@
     @apply mb-[22px] text-sm tracking-[0.08em] text-ink-soft before:mr-[10px] before:inline-block before:h-px before:w-[22px] before:bg-camel before:align-middle before:content-[''];
   }
   .btn {
-    @apply inline-flex items-center gap-[10px] rounded-full px-[30px] py-[15px] text-[15px] transition;
+    @apply inline-flex items-center gap-[10px] rounded-full px-[30px] py-[15px] text-[15px] font-bold transition;
   }
   .btn-primary {
     @apply bg-ink text-bg hover:-translate-y-0.5 hover:bg-rose;
