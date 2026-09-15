@@ -1,14 +1,41 @@
 ---
 const items = [
-  { cls: "col-span-2 row-span-2 bg-[linear-gradient(160deg,var(--color-rose-soft),var(--color-rose))]", label: "陶瓷肌 · 婚禮迎娶妝" },
-  { cls: "bg-stone", label: "裸色棚拍" },
-  { cls: "bg-coffee row-span-2", label: "晚宴造型" },
-  { cls: "col-span-2 bg-[linear-gradient(160deg,var(--color-cream),var(--color-camel))]", label: "復古眼妝" },
-  { cls: "bg-wisteria-soft", label: "紫調煙燻" },
-  { cls: "col-span-2 bg-green", label: "編輯風主視覺" },
-  { cls: "row-span-2 bg-rose", label: "戶外午宴妝" },
-  { cls: "bg-stone", label: "日常通勤妝" },
-  { cls: "col-span-2 bg-[linear-gradient(160deg,var(--color-coffee),var(--color-wisteria))]", label: "棕調氣質妝" },
+  {
+    cls: "col-start-1 col-span-2 row-start-1 row-span-2 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-[linear-gradient(160deg,var(--color-rose-soft),var(--color-rose))]",
+    label: "陶瓷肌 · 婚禮迎娶妝",
+  },
+  {
+    cls: "col-start-4 row-start-1 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-stone",
+    label: "裸色棚拍",
+  },
+  {
+    cls: "col-start-3 row-start-1 row-span-2 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-coffee",
+    label: "晚宴造型",
+  },
+  {
+    cls: "col-start-4 col-span-2 row-start-2 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-[linear-gradient(160deg,var(--color-cream),var(--color-camel))]",
+    label: "復古眼妝",
+  },
+  {
+    cls: "col-start-5 row-start-1 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-wisteria-soft",
+    label: "紫調煙燻",
+  },
+  {
+    cls: "col-start-1 col-span-2 row-start-3 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-green",
+    label: "編輯風主視覺",
+  },
+  {
+    cls: "col-start-6 row-start-1 row-span-2 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-rose",
+    label: "戶外午宴妝",
+  },
+  {
+    cls: "col-start-5 row-start-3 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-stone",
+    label: "日常通勤妝",
+  },
+  {
+    cls: "col-start-3 col-span-2 row-start-3 max-[900px]:col-start-auto max-[900px]:row-start-auto bg-[linear-gradient(160deg,var(--color-coffee),var(--color-wisteria))]",
+    label: "棕調氣質妝",
+  },
 ];
 ---
 
@@ -21,12 +48,67 @@ const items = [
     <div
       class="grid grid-cols-6 auto-rows-[150px] grid-flow-dense gap-[14px] max-[900px]:grid-cols-3 max-[900px]:auto-rows-[130px] max-[560px]:grid-cols-2 max-[560px]:auto-rows-[120px]"
     >
-      {items.map((item) => (
-        <div class={`relative flex items-end overflow-hidden rounded-sm p-4 ${item.cls}`}>
+      {items.map((item, i) => (
+        <button
+          type="button"
+          data-portfolio-item={i}
+          class={`group relative flex cursor-pointer items-end overflow-hidden rounded-sm p-4 text-left transition-transform duration-300 hover:-translate-y-0.5 ${item.cls}`}
+        >
           <span class="relative text-[14px] text-[rgba(58,49,42,0.75)]">{item.label}</span>
-        </div>
+        </button>
       ))}
     </div>
     <p class="mt-[26px] text-[14px] text-ink-soft">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
   </div>
 </section>
+
+<div
+  id="portfolio-lightbox"
+  hidden
+  class="fixed inset-0 z-[60] flex items-center justify-center bg-[rgba(58,49,42,0.85)] p-6"
+>
+  <button
+    type="button"
+    id="portfolio-lightbox-close"
+    aria-label="關閉"
+    class="absolute right-6 top-6 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-bg text-ink transition-colors duration-300 hover:bg-rose"
+  >
+    ✕
+  </button>
+  <div class="w-full max-w-[560px]">
+    <div id="portfolio-lightbox-swatch" class="aspect-[4/5] w-full rounded-lg"></div>
+    <p id="portfolio-lightbox-label" class="mt-6 text-center font-serif text-xl text-bg"></p>
+    <p class="mt-2 text-center text-sm text-[rgba(247,241,229,0.6)]">＊此區為版面配置示意，正式上線前將替換為實際作品照片。</p>
+  </div>
+</div>
+
+<script>
+  const items = document.querySelectorAll<HTMLButtonElement>("[data-portfolio-item]");
+  const lightbox = document.getElementById("portfolio-lightbox");
+  const swatch = document.getElementById("portfolio-lightbox-swatch");
+  const label = document.getElementById("portfolio-lightbox-label");
+  const closeBtn = document.getElementById("portfolio-lightbox-close");
+
+  function openLightbox(button: HTMLButtonElement) {
+    if (!lightbox || !swatch || !label) return;
+    const bgClass = Array.from(button.classList).find((c) => c.startsWith("bg-"));
+    swatch.className = `aspect-[4/5] w-full rounded-lg ${bgClass ?? "bg-stone"}`;
+    label.textContent = button.querySelector("span")?.textContent ?? "";
+    lightbox.hidden = false;
+  }
+
+  function closeLightbox() {
+    if (lightbox) lightbox.hidden = true;
+  }
+
+  items.forEach((button) => {
+    button.addEventListener("click", () => openLightbox(button));
+  });
+  closeBtn?.addEventListener("click", closeLightbox);
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeLightbox();
+  });
+</script>
