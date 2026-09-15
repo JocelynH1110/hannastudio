@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --header-height: 78px;
+
   --color-bg: #F7F1E5;
   --color-bg-alt: #EFE6D6;
   --color-ink: #3A312A;
@@ -53,7 +55,7 @@
     @apply py-[120px] max-[720px]:py-20;
   }
   section[id] {
-    @apply scroll-mt-[calc(78px+1em)];
+    @apply scroll-mt-[calc(var(--header-height)+1em)];
   }
 }
 

@@ -3,7 +3,7 @@ import Icon from "./Icon.astro";
 ---
 
 <header class="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/86 backdrop-blur-[10px]">
-  <nav class="wrap flex h-[78px] items-center justify-between">
+  <nav class="wrap flex h-[var(--header-height)] items-center justify-between">
     <div class="logotype text-[26px]">Hanna</div>
     <div class="flex gap-9 text-[15px] text-ink-soft max-[760px]:hidden">
       <a href="#about" class="transition-colors duration-300 hover:text-rose-text">關於</a>
@@ -64,5 +64,20 @@ import Icon from "./Icon.astro";
 
   menu?.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (toggle?.getAttribute("aria-expanded") === "true") setMenuOpen(false);
+    },
+    { passive: true },
+  );
+
+  document.addEventListener("click", (event) => {
+    if (toggle?.getAttribute("aria-expanded") !== "true") return;
+    const target = event.target as Node;
+    if (toggle.contains(target) || menu?.contains(target)) return;
+    setMenuOpen(false);
   });
 </script>
