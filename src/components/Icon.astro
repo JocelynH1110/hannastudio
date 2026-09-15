@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: "line" | "email" | "pin" | "facebook" | "instagram";
+  title: string;
+  class?: string;
+}
+
+const { name, title, class: className = "h-[18px] w-[18px]" } = Astro.props;
+---
+
+<svg class={className} role="img" aria-label={title}>
+  <use href={`#icon-${name}`} />
+</svg>
