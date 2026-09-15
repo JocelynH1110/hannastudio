@@ -33,11 +33,21 @@ const { title = "Hanna｜妝造設計" } = Astro.props;
       const rect = target.getBoundingClientRect();
       const sectionTop = rect.top + window.scrollY;
       const elementCenter = sectionTop + rect.height / 2;
-      const centeredTop = elementCenter - window.innerHeight / 2;
-      // Never scroll past the section's own top edge — a section taller
-      // than the viewport would otherwise center on its middle and push
-      // the heading off-screen above.
-      const top = Math.max(0, Math.min(centeredTop, sectionTop - HEADER_HEIGHT));
+      let top = Math.max(0, elementCenter - window.innerHeight / 2);
+
+      // Keep the heading on-screen no matter how tall the section is,
+      // without over-constraining shorter sections that can genuinely
+      // center. Bound `top` so the heading stays between just-below-the
+      // -header and just-above-the-bottom-edge.
+      const heading = target.querySelector("h2");
+      if (heading) {
+        const headingTop = heading.getBoundingClientRect().top + window.scrollY;
+        const maxTop = headingTop - HEADER_HEIGHT;
+        const minTop = headingTop - window.innerHeight;
+        top = Math.min(top, maxTop);
+        top = Math.max(top, minTop);
+      }
+
       window.scrollTo({ top, behavior: "smooth" });
     }
 
